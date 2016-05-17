@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.myView = [[UIView alloc]initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.myView = [[MyScrollView alloc]initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     [self.view addSubview:self.myView];
     
@@ -44,7 +44,10 @@
     
     [self.myView addSubview:yellowView];
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panToScroll:)];
+ 
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self.myView action:@selector(panToScroll:)];
+    [self.myView addGestureRecognizer:pan];
     
     // Do any additional setup after loading the view, typically from a nib.
 }

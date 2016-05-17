@@ -17,11 +17,17 @@
 
 -(void)panToScroll:(UIPanGestureRecognizer*)pan {
  
-//    self.contentSize = 
+ 
+//    scrollView.contentSize = CGSizeMake(view.frame.width, view.frame.height * 2)
+    
+   
     
     if ((pan.state == UIGestureRecognizerStateChanged)||(pan.state == UIGestureRecognizerStateEnded)) {
         
         CGPoint translation = [pan translationInView:self];
+        NSLog(@"%f, %f", translation.x, translation.y);
+        
+        self.frame = CGRectMake(translation.x, translation.y, self.frame.size.width, self.frame.size.height);
     }
     
     
